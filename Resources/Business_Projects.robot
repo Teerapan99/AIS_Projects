@@ -1,8 +1,6 @@
 ***Settings***
-Resource       Variables_Projects.robot
+Resource           ./PO/Login.robot   
 
 ***Keywords***
-Open Test
-    Open Browser    ${base_url}     ${base_browser}  
-    Sleep    3s 
-    Close Browser
+login to AIS Group Asset Management
+    Login To AMM
