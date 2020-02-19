@@ -1,6 +1,5 @@
 ***Settings***
 Resource          Variables_Projects.robot
-Resource          ../DataInput/Data.robot
 
 
 ***Keywords***
