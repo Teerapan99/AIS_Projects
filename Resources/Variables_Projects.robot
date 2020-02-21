@@ -2,9 +2,19 @@
 Library                           SeleniumLibrary
 Library                           DateTime
 Library                           String
+Library                           DatabaseLibrary
+Library                           OperatingSystem
 ***Variables***
 ${base_url}                       https://10.208.152.171/AAM/direct.jsp  
 ${base_browser}                   ff
+#################Database Connect##############
+${DBName}                         AACMTST
+${DBUser}                         aam
+${DBPass}                         aam
+${DBHost}                         10.208.152.170
+${DBPort}                         1521
+${DBService}                      aacmtst
+
 #################Local Locator##############
 ${Locator_Next_Button}            id=btn_next
 ${Locator_Frame_Header}           name=fHead
@@ -80,18 +90,17 @@ ${Locator_Button_Next_Cost}           id=next
 
 
 #################Summary Information Tab##############
-${Locator_Button_Save&Summit}         id="saveSubmit"
+${Locator_Button_Save&Summit}         id=saveSubmit
 
 #################Generate Document Tab##############
-${Locator_Document Type}              //*[contains(@class,'tabBox')]/div[2]/table/tbody/tr[3]/td[2]/span
-${Locator_Main Document ID}           //*[contains(@class,'tabBox')]/div[2]/table/tbody/tr[4]/td[2]/span          
-${Locator_Sub Document ID}            //*[contains(@class,'tabBox')]/div[2]/table/tbody/tr[5]/td[2]/span    
+${Locator_Document_Type}              //*[contains(@class,'tabBox')]/div[2]/table/tbody/tr[3]/td[2]/span
+${Locator_Main_Document_ID}           //*[contains(@class,'tabBox')]/div[2]/table/tbody/tr[4]/td[2]/span          
+${Locator_Sub_Document_ID}            //*[contains(@class,'tabBox')]/div[2]/table/tbody/tr[5]/td[2]/span    
 ${Locator_Status}                     //*[contains(@class,'tabBox')]/div[2]/table/tbody/tr[6]/td[2]/span     
 ${Locator_Button_Generate}            id=okBtn
 
 #################Select for approve Tab##############
-${Locator_Select}                     //*[@id="tbReplace"]/tbody/tr/td[4]/span/button
-${Locator_User_approve}               //*[text()="@{User_approve}[0]"]
+${Locator_Select_User_Approve}        //*[@id="tbReplace"]/tbody/tr/td[4]/span/button
 ${Locator_select_right}               id=right
 ${Locator_Button_approve_OK}          id=ok
 ${Locator_Button_save}                id=save

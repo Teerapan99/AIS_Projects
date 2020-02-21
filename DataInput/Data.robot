@@ -60,4 +60,4 @@ ${Alert_Present_save&submit}     CM0025 : Do you want to save and submit this do
 ...                  ยมนา เพชรรัตน์
 ...                  ขจรเดช โชติจำนอง 
 ${Alert_Present_save_approve}    ต้องการบันทึกข้อมูลหรือไม่?   
-${Alert_Present_Approvesubmit}     CM0025 : Do you want to approve this document?
+${Alert_Present_Approvesubmit}     CM0025 : Do you want to approve this document?  
