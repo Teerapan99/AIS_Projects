@@ -49,4 +49,15 @@ ${Project_Name}     2018 Switching (SCCPGW)-BKK
 ...                BKK-Planning
 ...                Branch & TWZ (UPC) & Region
 @{Province}        BANGKOK
-...                NONTHABURI             
+...                NONTHABURI 
+${PONO}            4500134871       
+${quantity}        1
+${serialNo}        CB4F
+${Validate_not_duplicate_serialNo}    TS0042 : No serial no is duplicated, you can pass this step by pressing Next button
+${Alert_Present_save&submit}     CM0025 : Do you want to save and submit this document? 
+@{User_approve}      วรัฐยา UAT เทียนไพบูลย์ศิริ
+...                  พนิดา วิวัฒน์จิตเจริญ
+...                  ยมนา เพชรรัตน์
+...                  ขจรเดช โชติจำนอง 
+${Alert_Present_save_approve}    ต้องการบันทึกข้อมูลหรือไม่?   
+${Alert_Present_Approvesubmit}     CM0025 : Do you want to approve this document?
