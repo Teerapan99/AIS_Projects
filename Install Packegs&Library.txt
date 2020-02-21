@@ -1,0 +1,12 @@
+Python V3.8.1
+
+####Run Command####
+python -m pip install –upgrade pip
+pip install robotframework
+pip install robotframework-seleniumlibrary
+
+####Connect DB Oracle##### 
+pip install robotframework-databaselibrary
+
+µÔ´µÑé§ Instant Client ORACLE
+Set Variables    ORACLE_HOME

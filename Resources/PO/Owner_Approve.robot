@@ -4,11 +4,11 @@ Resource          ../../DataInput/Data.robot
 
 ***Keywords***
 Owner Approve Transection stock
-    #[Arguments]       ${Sub_Document_ID}
+    [Arguments]       ${Sub_Document_ID}
     Select Frame      ${Locator_Frame_Body}
     Wait Until Element Is Visible    ${Locator_Waiting_approve}
     Click Element     ${Locator_Waiting_approve}
-    Click Element     //*[text()='T0220-0002017-01']
+    Click Element     //*[text()='${Sub_Document_ID}']
     Wait Until Element Is Visible    ${Locator_Button_approve}
     Execute JavaScript    window.scrollTo(0,2000)
     Click Element     ${Locator_Button_approve}

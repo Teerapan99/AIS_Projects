@@ -24,6 +24,7 @@ Select Data & Verify General Information Tab
     Run Keyword If   '${Business_data}'=='@{Business Group}[1]'    
     ...              Run Keywords
     ...              Select Frame     ${Locator_Frame_Body}
+    ...    AND       Wait Until Element Is Visible     ${Locator_Business_Group}
     ...    AND       Select From List By label     ${Locator_Business_Group}    ${Business_data}
     ...    AND       Click Button     ${Locator_Project_Button} 
     ...    AND       General Information (Document type = ตรวจรับทรัพย์สินใหม่แบบ Term GR)
@@ -46,7 +47,8 @@ Select Data & Verify Location Information Tab
     [Arguments]      ${Location_data}    ${Region_data}
     Run Keyword If    '${Location_data}'=='@{Location_type}[0]'    
     ...               Run Keywords
-    ...               Select Frame       ${Locator_Frame_Body}  
+    ...               Select Frame       ${Locator_Frame_Body} 
+    ...    AND        Wait Until Element Is Visible    ${Locator_Location_type}   
     ...    AND        Select From List By label    ${Locator_Location_type}    ${Location_data}
     ...    AND        Click Button       ${Locator_Location_search} 
     ...    AND        Search Location    ${Region_data} 
@@ -58,6 +60,7 @@ Search Location
     Run Keyword If    '${Region_data}'=='@{Region}[0]'   
     ...               Run Keywords
     ...               Select Frame     ${Locator_Frame_simpleIframe}
+    ...    AND        Wait Until Element Is Visible    ${Locator_Region}
     ...    AND        Select From List By label    ${Locator_Region}           ${Region_data}
     ...    AND        Select From List By label    ${Locator_MC zone}          @{MC_zone}[0]
     ...    AND        Select From List By label    ${Locator_Province}         @{Province}[0]
@@ -69,6 +72,7 @@ Select Data & Verify PO Item Information Tab
     Run Keyword If    '${Business_data}'=='@{Business Group}[1]'    
     ...               Run Keywords
     ...               Select Frame     ${Locator_Frame_Body} 
+    ...    AND        Wait Until Element Is Visible    ${Locator_Select_PONO}  
     ...    AND        Click Button     ${Locator_Select_PONO}  
     ...    AND        Search Popup PO
     ...    AND        Update Information PO Item  
@@ -92,6 +96,7 @@ Update Information PO Item
     Unselect Frame
 Select Data & Verify Article Information Tab
     Select Frame     ${Locator_Frame_Body}
+    Wait Until Element Is Visible    ${Locator_Image_add}
     Click Element    ${Locator_Image_add}
     Operation Information
     Select Frame     ${Locator_Frame_Body}
@@ -103,6 +108,7 @@ Operation Information
     #Can't select datepicker
     # Click Element    ${Locator_Outofwarranty}   
     # Click Element    ${Locator_datepicker}
+    Wait Until Element Is Visible    ${Locator_serialNo}    
     Input text       ${Locator_serialNo}    ${serialNo}${Random_Number}
     Click Button     ${Locator_Button_operAdd} 
     Execute JavaScript    window.scrollTo(0,100)
@@ -110,34 +116,41 @@ Operation Information
     Unselect Frame
 Select Data & Verify Duplicated Serial No Detail Tab
     Select Frame     ${Locator_Frame_Body}
+    Wait Until Element Is Visible    ${Locator_Button_Next_Duplicated}
     Element Text Should Be    ${Locator_notduplicate_serialNo}    ${Validate_not_duplicate_serialNo}
     Click Button     ${Locator_Button_Next_Duplicated} 
     Unselect Frame
 Select Data & Verify Material Information Tab
     Select Frame     ${Locator_Frame_Body}
+    Wait Until Element Is Visible     ${Locator_Button_Next_Material}
     Click Button     ${Locator_Button_Next_Material}
     Unselect Frame
 Select Data & Verify Cost Information Tab
     Select Frame     ${Locator_Frame_Body}
+    Wait Until Element Is Visible    ${Locator_Button_Next_Cost}
     Click Button     ${Locator_Button_Next_Cost}  
     Unselect Frame
 Select Data & Verify Summary Information Tab
     Select Frame     ${Locator_Frame_Body}
     Execute JavaScript    window.scrollTo(0,2000)
     Click Button     ${Locator_Button_Save&Summit}
-    Alert Should Be Present    ${Alert_Present}     
+    Alert Should Be Present    ${Alert_Present_save&submit}
     Unselect Frame
 Select Data & Verify Generate Document Tab
     Select Frame     ${Locator_Frame_Body}
-    ${Sub_Document_ID}    Get Text    ${Locator_Sub Document ID} 
+    Wait Until Element Is Visible     ${Locator_Sub_Document_ID}  
+    ${Sub_Document_ID}    Get Text    ${Locator_Sub_Document_ID}   
     Click Button     ${Locator_Button_Generate} 
     Set Test Variable     ${Sub_Document_ID}  
     Unselect Frame
 Select Data & Verify Select for approve Tab 
+    [Arguments]      ${User_Appove}
     Select Frame     ${Locator_Frame_Body}
+    Wait Until Element Is Visible    ${Locator_Select_User_Approve} 
+    Click Element    ${Locator_Select_User_Approve}
     Select Frame     ${Locator_Frame_simpleIframe}
-    Click Element    ${Locator_Select}
-    Click Element    ${Locator_User_approve}  
+    Wait Until Element Is Visible    //*[text()='${User_Appove}']      
+    Click Element    //*[text()='${User_Appove}']    
     Click Element    ${Locator_select_right}      
     Click Element    ${Locator_Button_approve_OK}  
     Unselect Frame
