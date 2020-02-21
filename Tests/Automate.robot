@@ -1,12 +1,10 @@
 ***Settings***
-Resource          ../Resources/Business_Projects.robot
-Resource          ../Resources/Common.robot
-Test Setup        Open Web AMM
-Test Teardown     Close AMM Web
+Resource             ../Resources/Business_Projects.robot
+
 ***Test Cases***
-TC1:login to AIS Group Asset Management
-    [Tags]    Login
-    login to AIS Group Asset Management
+SC1:Create Transection stock And Approve on AIS Group Asset Management
+    [Tags]    Create   Approve 
+    Business_Projects.Create Transection stock And Approve
 
 
 
