@@ -4,8 +4,9 @@ Resource           ./PO/Owner_Approve.robot
 Resource           ./PO/DB_AAM.robot
 Resource           Common.robot
 Resource           Variables_Projects.robot
+Resource           ../Excel_Data.robot
 ***Keywords***
-Create Transection stock And Approve
+Create Transection stock 
     Common.Open Web AAM    @{Uasr}[0]
     Document_Menu.Mouse Over Menu Document
     Document_Menu.Click Transection stock
@@ -21,8 +22,11 @@ Create Transection stock And Approve
     Document_Menu.Select Data & Verify Generate Document Tab
     Document_Menu.Select Data & Verify Select for approve Tab       @{User_approve}[1]
     Common.Close AAM Web
+Get Data Owner Approve IN Database AAM
     DB_AAM.Get&Verify Data Owner Approve IN Database AAM
-    sleep    1s
+Owner Approve Transection stock
+    Excel_Data.Get Data From Excel Sub Document ID   
+    Excel_Data.Get Data From Excel Owner Approve      
     Common.Open Web AAM    ${Owner_Approve} 
-    Owner_Approve.Owner Approve Transection stock    ${Sub_Document_ID}
+    Owner_Approve.Owner Approve Transection stock     ${Sub_Document_ID}
     Common.Close AAM Web

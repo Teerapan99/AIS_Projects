@@ -4,6 +4,7 @@ Library                           DateTime
 Library                           String
 Library                           DatabaseLibrary
 Library                           OperatingSystem
+Library                           openpyxl
 ***Variables***
 ${base_url}                       https://10.208.152.171/AAM/direct.jsp  
 ${base_browser}                   ff
