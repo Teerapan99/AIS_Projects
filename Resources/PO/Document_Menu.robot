@@ -1,6 +1,7 @@
 ***Settings***
 Resource          ../Variables_Projects.robot
 Resource          ../../DataInput/Data.robot
+Resource          ../../Excel_Data.robot
 
 ***Keywords***
 Mouse Over Menu Document
@@ -37,6 +38,7 @@ Select Data & Verify General Information Tab
     Set Test Variable     ${Business_data}
 General Information (Document type = ตรวจรับทรัพย์สินใหม่แบบ Term GR)
     Select Frame     ${Locator_Frame_simpleIframe}
+    Wait Until Element Is Visible        ${Locator_PONO}
     input text       ${Locator_PONO}     ${PONO} 
     Click Button     ${Locator_search_Button} 
     Wait Until Element Is Visible    ${Locator_Select_Project}
@@ -141,8 +143,8 @@ Select Data & Verify Generate Document Tab
     Wait Until Element Is Visible     ${Locator_Sub_Document_ID}  
     ${Sub_Document_ID}    Get Text    ${Locator_Sub_Document_ID}   
     Click Button     ${Locator_Button_Generate} 
-    Set Test Variable     ${Sub_Document_ID}  
     Unselect Frame
+    Put Data to Excel Sub Document ID    ${Sub_Document_ID}   
 Select Data & Verify Select for approve Tab 
     [Arguments]      ${User_Appove}
     Select Frame     ${Locator_Frame_Body}

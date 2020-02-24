@@ -4,7 +4,7 @@ Python V3.8.1
 python -m pip install –upgrade pip
 pip install robotframework
 pip install robotframework-seleniumlibrary
-
+pip install openpyxl    #Library àÃÕÂ¡ãªé Excel File
 ####Connect DB Oracle##### 
 pip install robotframework-databaselibrary
 
