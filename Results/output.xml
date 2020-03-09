@@ -1,250 +1,380 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.8.1 on win32)" generated="20200224 11:28:12.353" rpa="false">
-<suite id="s1" name="Automate" source="D:\AIS_AAM-Transform\tests\automate.robot">
-<test id="s1-t1" name="SC3:Owner Approve Transection stock on AIS Group Asset Management">
-<kw name="Owner Approve Transection stock" library="Business_Projects">
-<kw name="Get Data From Excel Sub Document ID" library="Excel_Data">
-<kw name="Load Workbook" library="openpyxl">
-<doc>Open the given filename and return the workbook</doc>
+<robot generator="Robot 3.1.2 (Python 3.8.1 on win32)" generated="20200309 17:05:35.353" rpa="false">
+<suite id="s1" name="Automate" source="D:\aam-transform-jeap-robotscript\tests\automate.robot">
+<test id="s1-t1" name="SC23:Get&amp;Verify Data Owner Approve IN Database AAM">
+<kw name="Get Data Owner Approve Article IN Database AAM" library="Business_Projects">
+<kw name="Get&amp;Verify Data Owner Approve Article IN Database AAM" library="DB_AAM">
 <arguments>
-<arg>D:\\AIS_AAM-Transform/${excel}</arg>
+<arg>Article</arg>
+</arguments>
+<kw name="Connect Database AAM" library="DB_AAM">
+<kw name="Connect To Database" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
+<arguments>
+<arg>cx_Oracle</arg>
+<arg>${DBName}</arg>
+<arg>${DBUser}</arg>
+<arg>${DBPass}</arg>
+<arg>${DBHost}</arg>
+<arg>${DBPort}</arg>
+<arg>${DBService}</arg>
+</arguments>
+<msg timestamp="20200309 17:05:36.212" level="INFO">Connecting using: cx_Oracle.connect(user=aam, password=aam, dsn=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.208.152.170)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=AACMTST)))) </msg>
+<status status="PASS" starttime="20200309 17:05:36.208" endtime="20200309 17:05:36.336"></status>
+</kw>
+<status status="PASS" starttime="20200309 17:05:36.208" endtime="20200309 17:05:36.336"></status>
+</kw>
+<kw name="Get Data Owner ID For Approve Article IN Database AAM" library="DB_AAM">
+<arguments>
+<arg>${Document_data}</arg>
+</arguments>
+<kw name="Get Data From CSV Sub Document ID" library="CSV_Data">
+<arguments>
+<arg>${Document_data}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Document_data}'=='@{Document Type}[0]'</arg>
+<arg>CSV_Data.Sub Document ID ตรวจรับทรพย์สินใหม่แบบ Term Non GR</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.337" endtime="20200309 17:05:36.337"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Document_data}'=='@{Document Type}[1]'</arg>
+<arg>CSV_Data.Sub Document ID ตรวจรับทรพย์สินใหม่แบบ Term GR</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.337" endtime="20200309 17:05:36.337"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Document_data}'=='@{Document Type}[2]'</arg>
+<arg>CSV_Data.Sub Document ID ยืมทรัพย์สินจาก supplier</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.338" endtime="20200309 17:05:36.338"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Document_data}'=='@{Document Type}[3]'</arg>
+<arg>CSV_Data.Sub Document ID ย้ายทรัพย์สิน</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.338" endtime="20200309 17:05:36.338"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Document_data}'=='@{Document Type}[4]'</arg>
+<arg>CSV_Data.Sub Document ID ตัดจำหน่ายทะเบียนทรัพย์สินที่ไม่ส่งมอบ</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.338" endtime="20200309 17:05:36.339"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Document_data}'=='@{Document Type}[5]'</arg>
+<arg>CSV_Data.Sub Document ID ส่งคืนทรัพย์สินให้ผู้ให้สัมปทาน</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.339" endtime="20200309 17:05:36.339"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Document_data}'=='@{Document Type}[6]'</arg>
+<arg>CSV_Data.Sub Document ID ขอแก้ไขข้อมูลทรัพย์สิน</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.339" endtime="20200309 17:05:36.339"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Document_data}'=='Article'</arg>
+<arg>CSV_Data.Sub Document ID Create Article</arg>
+</arguments>
+<kw name="Sub Document ID Create Article" library="CSV_Data">
+<kw name="Read Csv File To Associative" library="CSVLibrary">
+<doc>Read CSV file and return its content as a Python list of dictionaries.</doc>
+<arguments>
+<arg>D:\\aam-transform-jeap-robotscript\\Resources\\PO${/}${csv_path}</arg>
 </arguments>
 <assign>
-<var>${wbget}</var>
+<var>@{Data}</var>
 </assign>
-<msg timestamp="20200224 11:28:13.609" level="INFO">${wbget} = &lt;openpyxl.workbook.workbook.Workbook object at 0x0EEFFF70&gt;</msg>
-<status status="PASS" starttime="20200224 11:28:13.598" endtime="20200224 11:28:13.609"></status>
+<msg timestamp="20200309 17:05:36.341" level="INFO">@{Data} = [ {'Create Type': 'ตรวจรับทรพย์สินใหม่แบบ Term Non GR', 'Sub Document ID': '', 'Owner Approve': ''} | {'Create Type': 'ตรวจรับทรพย์สินใหม่แบบ Term GR', 'Sub Document ID': 'T0220-0003984-01', 'Owner Ap...</msg>
+<status status="PASS" starttime="20200309 17:05:36.340" endtime="20200309 17:05:36.341"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
-<arg>${wbget.get_sheet_by_name('DataID')}</arg>
+<arg>&amp;{Data[${7}]}[Sub Document ID]</arg>
 </arguments>
 <assign>
-<var>${wsget}</var>
+<var>${Sub Document ID}</var>
 </assign>
-<msg timestamp="20200224 11:28:13.610" level="INFO">${wsget} = &lt;Worksheet "DataID"&gt;</msg>
-<status status="PASS" starttime="20200224 11:28:13.609" endtime="20200224 11:28:13.610"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${wsget.cell(2,1).value}</arg>
-</arguments>
-<assign>
-<var>${Sub_Document_ID}</var>
-</assign>
-<msg timestamp="20200224 11:28:13.610" level="INFO">${Sub_Document_ID} = T0220-0003099-01</msg>
-<status status="PASS" starttime="20200224 11:28:13.610" endtime="20200224 11:28:13.610"></status>
+<msg timestamp="20200309 17:05:36.341" level="INFO">${Sub Document ID} = ART2020-000020</msg>
+<status status="PASS" starttime="20200309 17:05:36.341" endtime="20200309 17:05:36.341"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
-<arg>${Sub_Document_ID}</arg>
+<arg>${Sub Document ID}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:13.611" level="INFO">${Sub_Document_ID} = T0220-0003099-01</msg>
-<status status="PASS" starttime="20200224 11:28:13.611" endtime="20200224 11:28:13.611"></status>
+<msg timestamp="20200309 17:05:36.341" level="INFO">${Sub Document ID} = ART2020-000020</msg>
+<status status="PASS" starttime="20200309 17:05:36.341" endtime="20200309 17:05:36.341"></status>
 </kw>
-<status status="PASS" starttime="20200224 11:28:13.597" endtime="20200224 11:28:13.611"></status>
+<status status="PASS" starttime="20200309 17:05:36.340" endtime="20200309 17:05:36.342"></status>
 </kw>
-<kw name="Get Data From Excel Owner Approve" library="Excel_Data">
-<kw name="Load Workbook" library="openpyxl">
-<doc>Open the given filename and return the workbook</doc>
+<status status="PASS" starttime="20200309 17:05:36.339" endtime="20200309 17:05:36.342"></status>
+</kw>
+<status status="PASS" starttime="20200309 17:05:36.336" endtime="20200309 17:05:36.342"></status>
+</kw>
+<kw name="Query" library="DatabaseLibrary">
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
 <arguments>
-<arg>D:\\AIS_AAM-Transform/${excel}</arg>
+<arg>select SUBSTR(owner_id,1,8) from WF_UR_ARTICLE_work_item where sub_doc_id='${Sub_Document_ID}'</arg>
 </arguments>
 <assign>
-<var>${wbget}</var>
+<var>${Output}</var>
 </assign>
-<msg timestamp="20200224 11:28:13.620" level="INFO">${wbget} = &lt;openpyxl.workbook.workbook.Workbook object at 0x0EF33658&gt;</msg>
-<status status="PASS" starttime="20200224 11:28:13.612" endtime="20200224 11:28:13.620"></status>
+<msg timestamp="20200309 17:05:36.342" level="INFO">Executing : Query  |  select SUBSTR(owner_id,1,8) from WF_UR_ARTICLE_work_item where sub_doc_id='ART2020-000020' </msg>
+<msg timestamp="20200309 17:05:36.349" level="INFO">${Output} = [('00029536',)]</msg>
+<status status="PASS" starttime="20200309 17:05:36.342" endtime="20200309 17:05:36.349"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
-<arg>${wbget.get_sheet_by_name('DataID')}</arg>
-</arguments>
-<assign>
-<var>${wsget}</var>
-</assign>
-<msg timestamp="20200224 11:28:13.621" level="INFO">${wsget} = &lt;Worksheet "DataID"&gt;</msg>
-<status status="PASS" starttime="20200224 11:28:13.621" endtime="20200224 11:28:13.621"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${wsget.cell(2,2).value}</arg>
+<arg>${Output[0][0]}</arg>
 </arguments>
 <assign>
 <var>${Owner_Approve}</var>
 </assign>
-<msg timestamp="20200224 11:28:13.622" level="INFO">${Owner_Approve} = 00032211</msg>
-<status status="PASS" starttime="20200224 11:28:13.621" endtime="20200224 11:28:13.622"></status>
+<msg timestamp="20200309 17:05:36.350" level="INFO">${Owner_Approve} = 00029536</msg>
+<status status="PASS" starttime="20200309 17:05:36.350" endtime="20200309 17:05:36.350"></status>
 </kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<kw name="Put Data Owner Approve To CSV File" library="CSV_Data">
 <arguments>
+<arg>${Document_data}</arg>
 <arg>${Owner_Approve}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:13.623" level="INFO">${Owner_Approve} = 00032211</msg>
-<status status="PASS" starttime="20200224 11:28:13.622" endtime="20200224 11:28:13.623"></status>
-</kw>
-<status status="PASS" starttime="20200224 11:28:13.612" endtime="20200224 11:28:13.623"></status>
-</kw>
-<kw name="Open Web AAM" library="Common">
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
+<arg>'${Document_data}'=='@{Document Type}[0]'</arg>
+<arg>Insert Data To CSV</arg>
+<arg>Owner Approve</arg>
+<arg>0</arg>
 <arg>${Owner_Approve}</arg>
 </arguments>
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" starttime="20200309 17:05:36.351" endtime="20200309 17:05:36.351"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>${base_url}</arg>
-<arg>${base_browser}</arg>
-<arg>options=add_argument("--ignore-certificate-errors")</arg>
+<arg>'${Document_data}'=='@{Document Type}[1]'</arg>
+<arg>Insert Data To CSV</arg>
+<arg>Owner Approve</arg>
+<arg>1</arg>
+<arg>${Owner_Approve}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:13.624" level="INFO">Opening browser 'ff' to base url 'https://10.208.152.171/AAM/direct.jsp'.</msg>
-<msg timestamp="20200224 11:28:13.636" level="INFO">Firefox driver log is always forced to to: D:\AIS_AAM-Transform\results\geckodriver-32.log</msg>
-<status status="PASS" starttime="20200224 11:28:13.624" endtime="20200224 11:28:20.474"></status>
+<status status="PASS" starttime="20200309 17:05:36.351" endtime="20200309 17:05:36.352"></status>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20200224 11:28:20.474" endtime="20200224 11:28:20.496"></status>
-</kw>
-<kw name="Login To AAM" library="Login">
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>${Password}</arg>
+<arg>'${Document_data}'=='@{Document Type}[2]'</arg>
+<arg>Insert Data To CSV</arg>
+<arg>Owner Approve</arg>
+<arg>2</arg>
+<arg>${Owner_Approve}</arg>
 </arguments>
-<kw name="Input Text" library="SeleniumLibrary">
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20200309 17:05:36.352" endtime="20200309 17:05:36.352"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>${Locator_User}</arg>
-<arg>${Password}</arg>
+<arg>'${Document_data}'=='@{Document Type}[3]'</arg>
+<arg>Insert Data To CSV</arg>
+<arg>Owner Approve</arg>
+<arg>3</arg>
+<arg>${Owner_Approve}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:20.498" level="INFO">Typing text '00032211' into text field 'name=pin'.</msg>
-<status status="PASS" starttime="20200224 11:28:20.497" endtime="20200224 11:28:20.588"></status>
+<status status="PASS" starttime="20200309 17:05:36.352" endtime="20200309 17:05:36.352"></status>
 </kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<doc>Clicks the button identified by ``locator``.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>${Locator_Button_OK_Login}</arg>
+<arg>'${Document_data}'=='@{Document Type}[4]'</arg>
+<arg>Insert Data To CSV</arg>
+<arg>Owner Approve</arg>
+<arg>4</arg>
+<arg>${Owner_Approve}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:20.590" level="INFO">Clicking button '//*[@value="OK"]'.</msg>
-<status status="PASS" starttime="20200224 11:28:20.589" endtime="20200224 11:28:21.322"></status>
+<status status="PASS" starttime="20200309 17:05:36.352" endtime="20200309 17:05:36.353"></status>
 </kw>
-<status status="PASS" starttime="20200224 11:28:20.496" endtime="20200224 11:28:21.322"></status>
-</kw>
-<status status="PASS" starttime="20200224 11:28:13.623" endtime="20200224 11:28:21.322"></status>
-</kw>
-<kw name="Owner Approve Transection stock" library="Owner_Approve">
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>${Sub_Document_ID}</arg>
+<arg>'${Document_data}'=='@{Document Type}[5]'</arg>
+<arg>Insert Data To CSV</arg>
+<arg>Owner Approve</arg>
+<arg>5</arg>
+<arg>${Owner_Approve}</arg>
 </arguments>
-<kw name="Select Frame" library="SeleniumLibrary">
-<doc>Sets frame identified by ``locator`` as the current frame.</doc>
+<status status="PASS" starttime="20200309 17:05:36.353" endtime="20200309 17:05:36.353"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>${Locator_Frame_Body}</arg>
+<arg>'${Document_data}'=='@{Document Type}[6]'</arg>
+<arg>Insert Data To CSV</arg>
+<arg>Owner Approve</arg>
+<arg>6</arg>
+<arg>${Owner_Approve}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:21.324" level="INFO">Selecting frame 'name=fBody'.</msg>
-<status status="PASS" starttime="20200224 11:28:21.323" endtime="20200224 11:28:21.389"></status>
+<status status="PASS" starttime="20200309 17:05:36.353" endtime="20200309 17:05:36.353"></status>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<doc>Waits until the element ``locator`` is visible.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
 <arguments>
-<arg>${Locator_Waiting_approve}</arg>
+<arg>'${Document_data}'=='Article'</arg>
+<arg>Insert Data To CSV</arg>
+<arg>Owner Approve</arg>
+<arg>7</arg>
+<arg>${Owner_Approve}</arg>
 </arguments>
-<status status="PASS" starttime="20200224 11:28:21.389" endtime="20200224 11:28:21.732"></status>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
+<kw name="Insert Data To CSV" library="CSV_Data">
 <arguments>
-<arg>${Locator_Waiting_approve}</arg>
+<arg>Owner Approve</arg>
+<arg>7</arg>
+<arg>${Owner_Approve}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:21.733" level="INFO">Clicking element '//*[@id="treeDate"]/li[2]/ul/li[2]/ul/li[3]/span/a'.</msg>
-<status status="PASS" starttime="20200224 11:28:21.732" endtime="20200224 11:28:21.998"></status>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
 <arguments>
-<arg>//*[text()='${Sub_Document_ID}']</arg>
+<arg>${rowIndex}+1</arg>
 </arguments>
-<msg timestamp="20200224 11:28:21.999" level="INFO">Clicking element '//*[text()='T0220-0003099-01']'.</msg>
-<status status="PASS" starttime="20200224 11:28:21.999" endtime="20200224 11:28:22.640"></status>
+<assign>
+<var>${rowIndex}</var>
+</assign>
+<msg timestamp="20200309 17:05:36.354" level="INFO">${rowIndex} = 8</msg>
+<status status="PASS" starttime="20200309 17:05:36.354" endtime="20200309 17:05:36.354"></status>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<doc>Waits until the element ``locator`` is visible.</doc>
+<kw name="Read Csv File To List" library="CSVLibrary">
+<doc>Read CSV file and return its content as a Python list of tuples.</doc>
 <arguments>
-<arg>${Locator_Button_approve}</arg>
+<arg>D:\\aam-transform-jeap-robotscript\\Resources\\PO${/}${csv_path}</arg>
 </arguments>
-<status status="PASS" starttime="20200224 11:28:22.640" endtime="20200224 11:28:22.905"></status>
+<assign>
+<var>${ListCSV}</var>
+</assign>
+<msg timestamp="20200309 17:05:36.355" level="INFO">${ListCSV} = [('Create Type', 'Sub Document ID', 'Owner Approve'), ('ตรวจรับทรพย์สินใหม่แบบ Term Non GR', '', ''), ('ตรวจรับทรพย์สินใหม่แบบ Term GR', 'T0220-0003984-01', '32211'), ('ยืมทรัพย์สินจาก supplier', 'T06...</msg>
+<status status="PASS" starttime="20200309 17:05:36.354" endtime="20200309 17:05:36.355"></status>
 </kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<doc>Executes the given JavaScript code with possible arguments.</doc>
+<kw name="Empty Csv File" library="CSVLibrary">
+<doc>This keyword will empty the CSV file.</doc>
 <arguments>
-<arg>window.scrollTo(0,2000)</arg>
+<arg>D:\\aam-transform-jeap-robotscript\\Resources\\PO${/}${csv_path}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:22.907" level="INFO">Executing JavaScript:
-window.scrollTo(0,2000)
-Without any arguments.</msg>
-<status status="PASS" starttime="20200224 11:28:22.906" endtime="20200224 11:28:22.913"></status>
+<status status="PASS" starttime="20200309 17:05:36.355" endtime="20200309 17:05:36.356"></status>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
+<kw name="Get Index From List" library="Collections">
+<doc>Returns the index of the first occurrence of the ``value`` on the list.</doc>
 <arguments>
-<arg>${Locator_Button_approve}</arg>
+<arg>${ListCSV[0]}</arg>
+<arg>${columnName}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:22.914" level="INFO">Clicking element 'id=approveBtn'.</msg>
-<status status="PASS" starttime="20200224 11:28:22.914" endtime="20200224 11:28:23.168"></status>
+<assign>
+<var>${index}</var>
+</assign>
+<msg timestamp="20200309 17:05:36.356" level="INFO">${index} = 2</msg>
+<status status="PASS" starttime="20200309 17:05:36.356" endtime="20200309 17:05:36.356"></status>
 </kw>
-<kw name="Alert Should Be Present" library="SeleniumLibrary">
-<doc>Verifies that an alert is present and by default, accepts it.</doc>
+<kw name="Convert To List" library="Collections">
+<doc>Converts the given ``item`` to a Python ``list`` type.</doc>
 <arguments>
-<arg>${Alert_Present_Approvesubmit}</arg>
+<arg>${ListCSV[${rowIndex}]}</arg>
 </arguments>
-<status status="PASS" starttime="20200224 11:28:23.168" endtime="20200224 11:28:23.245"></status>
+<assign>
+<var>${listUpdate}</var>
+</assign>
+<msg timestamp="20200309 17:05:36.357" level="INFO">${listUpdate} = ['Create Article', 'ART2020-000020', '']</msg>
+<status status="PASS" starttime="20200309 17:05:36.356" endtime="20200309 17:05:36.357"></status>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<doc>Waits until the element ``locator`` is visible.</doc>
+<kw name="Remove From List" library="Collections">
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
 <arguments>
-<arg>${Locator_Button_Save_approve}</arg>
+<arg>${listUpdate}</arg>
+<arg>${index}</arg>
 </arguments>
-<status status="PASS" starttime="20200224 11:28:23.245" endtime="20200224 11:28:23.735"></status>
+<status status="PASS" starttime="20200309 17:05:36.357" endtime="20200309 17:05:36.357"></status>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click the element identified by ``locator``.</doc>
+<kw name="Insert Into List" library="Collections">
+<doc>Inserts ``value`` into ``list`` to the position specified with ``index``.</doc>
 <arguments>
-<arg>${Locator_Button_Save_approve}</arg>
+<arg>${listUpdate}</arg>
+<arg>${index}</arg>
+<arg>${Value}</arg>
 </arguments>
-<msg timestamp="20200224 11:28:23.736" level="INFO">Clicking element 'id=save'.</msg>
-<status status="PASS" starttime="20200224 11:28:23.736" endtime="20200224 11:28:23.836"></status>
+<status status="PASS" starttime="20200309 17:05:36.357" endtime="20200309 17:05:36.357"></status>
 </kw>
-<kw name="Alert Should Be Present" library="SeleniumLibrary">
-<doc>Verifies that an alert is present and by default, accepts it.</doc>
+<kw name="Remove From List" library="Collections">
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
 <arguments>
-<arg>${Alert_Present_save_approve}</arg>
+<arg>${ListCSV}</arg>
+<arg>${rowIndex}</arg>
 </arguments>
-<status status="PASS" starttime="20200224 11:28:23.836" endtime="20200224 11:28:23.897"></status>
+<status status="PASS" starttime="20200309 17:05:36.357" endtime="20200309 17:05:36.358"></status>
 </kw>
-<kw name="Unselect Frame" library="SeleniumLibrary">
-<doc>Sets the main frame as the current frame.</doc>
-<status status="PASS" starttime="20200224 11:28:23.897" endtime="20200224 11:28:23.901"></status>
+<kw name="Insert Into List" library="Collections">
+<doc>Inserts ``value`` into ``list`` to the position specified with ``index``.</doc>
+<arguments>
+<arg>${ListCSV}</arg>
+<arg>${rowIndex}</arg>
+<arg>${listUpdate}</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.358" endtime="20200309 17:05:36.358"></status>
 </kw>
-<status status="PASS" starttime="20200224 11:28:21.323" endtime="20200224 11:28:23.901"></status>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>D:\\aam-transform-jeap-robotscript\\Resources\\PO${/}${csv_path}</arg>
+<arg>${ListCSV}</arg>
+</arguments>
+<status status="PASS" starttime="20200309 17:05:36.358" endtime="20200309 17:05:36.359"></status>
 </kw>
-<kw name="Close AAM Web" library="Common">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20200224 11:28:23.902" endtime="20200224 11:28:25.636"></status>
+<status status="PASS" starttime="20200309 17:05:36.354" endtime="20200309 17:05:36.359"></status>
 </kw>
-<status status="PASS" starttime="20200224 11:28:23.902" endtime="20200224 11:28:25.636"></status>
+<status status="PASS" starttime="20200309 17:05:36.354" endtime="20200309 17:05:36.359"></status>
 </kw>
-<status status="PASS" starttime="20200224 11:28:13.597" endtime="20200224 11:28:25.636"></status>
+<status status="PASS" starttime="20200309 17:05:36.350" endtime="20200309 17:05:36.359"></status>
+</kw>
+<status status="PASS" starttime="20200309 17:05:36.336" endtime="20200309 17:05:36.359"></status>
+</kw>
+<kw name="Disonnect Database AAM" library="DB_AAM">
+<kw name="Disconnect From Database" library="DatabaseLibrary">
+<doc>Disconnects from the database.</doc>
+<msg timestamp="20200309 17:05:36.359" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20200309 17:05:36.359" endtime="20200309 17:05:36.371"></status>
+</kw>
+<status status="PASS" starttime="20200309 17:05:36.359" endtime="20200309 17:05:36.371"></status>
+</kw>
+<status status="PASS" starttime="20200309 17:05:36.207" endtime="20200309 17:05:36.371"></status>
+</kw>
+<status status="PASS" starttime="20200309 17:05:36.207" endtime="20200309 17:05:36.371"></status>
 </kw>
 <tags>
-<tag>Approve</tag>
+<tag>Article</tag>
+<tag>SC23</tag>
 </tags>
-<status status="PASS" starttime="20200224 11:28:13.596" endtime="20200224 11:28:25.637" critical="yes"></status>
+<status status="PASS" starttime="20200309 17:05:36.206" endtime="20200309 17:05:36.371" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20200224 11:28:12.356" endtime="20200224 11:28:25.640"></status>
+<status status="PASS" starttime="20200309 17:05:35.354" endtime="20200309 17:05:36.373"></status>
 </suite>
 <statistics>
 <total>
@@ -252,7 +382,8 @@ Without any arguments.</msg>
 <stat pass="1" fail="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0">Approve</stat>
+<stat pass="1" fail="0">Article</stat>
+<stat pass="1" fail="0">SC23</stat>
 </tag>
 <suite>
 <stat pass="1" fail="0" id="s1" name="Automate">Automate</stat>
