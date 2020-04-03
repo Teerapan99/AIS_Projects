@@ -13,8 +13,7 @@ Resource             ../Resources/Business_Projects.robot
 #     [Tags]    SC3   stock 
 #     # Set Selenium Speed   0.2
 #     Business_Projects.Owner Approve Transection stock Non GR
-SC4:Create Transection stock GR on AIS Group Asset Management
-    [Tags]    SC4     stock  
+#SC4:Create Transection stock GR on AIS Group Asset Management
     Set Selenium Speed   0.1
     Business_Projects.Create Transection stock GR 
 SC5:Get&Verify Data Owner Approve Transection stock GR IN Database AAM 
