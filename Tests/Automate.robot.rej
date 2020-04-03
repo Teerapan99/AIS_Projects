@@ -1,9 +1,0 @@
-diff a/Tests/Automate.robot b/Tests/Automate.robot	(rejected hunks)
-@@ -13,7 +13,6 @@
- #     [Tags]    SC3   stock 
- #     # Set Selenium Speed   0.2
- #     Business_Projects.Owner Approve Transection stock Non GR
--SC4:Create Transection stock GR on AIS Group Asset Management
- #SC4:Create Transection stock GR on AIS Group Asset Management
-     Set Selenium Speed   0.1
-     Business_Projects.Create Transection stock GR 
